@@ -10,6 +10,7 @@
             chitarra.GetOriginalPrice();
             chitarra.GetIvaPrice();
             chitarra.GetCodeAndName();
+            chitarra.GetCode8();
         }
     }
 
@@ -49,6 +50,12 @@
         {
             string fullName = string.Join("_", this.code,this.name);
             Console.WriteLine($"Il nome completo del prodotto è {fullName}");
+        }
+        public void GetCode8()
+        {
+            string myString = this.code.ToString();
+            string newString = myString.PadLeft(8, '0');
+            Console.WriteLine($"Il codice assoluto del prodotto è {newString}");
         }
         //COSTRUTTORE
         public Product(string name, string description)
