@@ -4,9 +4,15 @@
     {
         static void Main(string[] args)
         {
-            Product newProduct = new Product();
+            Product chitarra = new Product("chitarra","miglior chitarra del mondo");
+            Console.WriteLine($"Il codice prodotto è {chitarra.Code}");
+            chitarra.SetPrice(22);
+            chitarra.GetOriginalPrice();
+            chitarra.GetIvaPrice();
         }
     }
+
+    //CLASSE PRODOTTO
     public class Product
     {
 
@@ -15,21 +21,36 @@
         public int Code { get { return code; } }
         public string name { get; set; }
         public string description { get; set; }
-        public int price { get; set; }
-        public int iva { get; set; }
+        public decimal price { get; set; }
+        public decimal iva { get; set; }
 
-        //setto il codice automaticamente
+        //SETTO IL CODICE AUTOMATICAMENTE
         private int SetCode()
         {
             System.Random rnd = new System.Random();
             int number = rnd.Next(0, 1001);
             return number;
         }
-
-        public Product()
+        public void SetPrice(decimal price)
         {
+            this.price = price;
+        }
+        public void GetOriginalPrice()
+        {
+           Console.WriteLine($"Il costo del prodotto senza IVA è {this.price} euro");
+        }
+        public void GetIvaPrice()
+        {
+            decimal ivaPrice = this.price + (this.price * this.iva);
+            Console.WriteLine($"Il costo del prodotto con IVA al 22% è {ivaPrice} euro");
+        }
+        //COSTRUTTORE
+        public Product(string name, string description)
+        {
+            this.name = name;
+            this.description = description;
             this.code = SetCode();
-            Console.WriteLine($"Il codice prodotto è {code}");
+            this.iva = 0.22m;
         }
     }
 }
