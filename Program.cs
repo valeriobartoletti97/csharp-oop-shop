@@ -9,6 +9,7 @@
             chitarra.SetPrice(22);
             chitarra.GetOriginalPrice();
             chitarra.GetIvaPrice();
+            chitarra.GetCodeAndName();
         }
     }
 
@@ -43,6 +44,11 @@
         {
             decimal ivaPrice = this.price + (this.price * this.iva);
             Console.WriteLine($"Il costo del prodotto con IVA al 22% è {ivaPrice} euro");
+        }
+        public void GetCodeAndName()
+        {
+            string fullName = string.Join("_", this.code,this.name);
+            Console.WriteLine($"Il nome completo del prodotto è {fullName}");
         }
         //COSTRUTTORE
         public Product(string name, string description)
